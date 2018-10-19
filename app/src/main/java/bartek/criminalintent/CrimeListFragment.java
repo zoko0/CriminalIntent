@@ -55,7 +55,7 @@ public class CrimeListFragment extends Fragment {
         void bind(Crime crime) {
             mCrime = crime;
             mTitleTv.setText(mCrime.getTitle());
-            mDateTv.setText(mCrime.getDate().toString());
+            mDateTv.setText(mCrime.formatDate(mCrime.getDate()));
             mSolvedIv.setVisibility(crime.isSolved() ? View.VISIBLE : View.GONE);
         }
 

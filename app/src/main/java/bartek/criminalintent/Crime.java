@@ -1,5 +1,7 @@
 package bartek.criminalintent;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
@@ -61,5 +63,10 @@ public class Crime {
 
     public void setRequiresPolice(int requiresPolice) {
         mRequiresPolice = requiresPolice;
+    }
+
+    public String formatDate(Date date) {
+        DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM);
+        return df.format(date);
     }
 }
