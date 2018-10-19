@@ -1,5 +1,6 @@
 package bartek.criminalintent;
 
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +39,7 @@ public class CrimeListFragment extends Fragment {
 
         private TextView mTitleTv;
         private TextView mDateTv;
+        private ImageView mSolvedIv;
         private Crime mCrime;
 
         CrimeHolder(View itemView) {
@@ -44,6 +47,7 @@ public class CrimeListFragment extends Fragment {
             itemView.setOnClickListener(this);
             mTitleTv = (TextView) itemView.findViewById(R.id.crime_title);
             mDateTv = (TextView) itemView.findViewById(R.id.crime_date);
+            mSolvedIv = (ImageView) itemView.findViewById(R.id.crime_solved);
         }
 
 
@@ -52,6 +56,7 @@ public class CrimeListFragment extends Fragment {
             mCrime = crime;
             mTitleTv.setText(mCrime.getTitle());
             mDateTv.setText(mCrime.getDate().toString());
+            mSolvedIv.setVisibility(crime.isSolved() ? View.VISIBLE : View.GONE);
         }
 
         @Override
@@ -76,18 +81,7 @@ public class CrimeListFragment extends Fragment {
 
         @Override
         public CrimeHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-           int layout = 0;
-
-           switch(viewType) {
-               case 0:
-                   layout = R.layout.list_item_crime;
-                   break;
-               case 1:
-                   layout = R.layout.list_item_police_crime;
-                   break;
-           }
-
-            View view = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_crime, parent, false);
             return new CrimeHolder(view);
         }
 
