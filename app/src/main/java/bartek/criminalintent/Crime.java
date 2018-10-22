@@ -16,17 +16,11 @@ public class Crime {
     private String mTitle;
     private Date mDate;
     private boolean mSolved;
-    private int mRequiresPolice;
 
     public Crime() {
         mId = UUID.randomUUID();
         mDate = new Date();
         Random rand = new Random();
-        if (rand.nextInt(2) == 0) {
-            mRequiresPolice = 0;
-        } else {
-            mRequiresPolice = 1;
-        }
     }
 
     public UUID getId() {
@@ -55,14 +49,6 @@ public class Crime {
 
     public void setSolved(boolean solved) {
         mSolved = solved;
-    }
-
-    public int isRequiresPolice() {
-        return mRequiresPolice;
-    }
-
-    public void setRequiresPolice(int requiresPolice) {
-        mRequiresPolice = requiresPolice;
     }
 
     public String formatDate(Date date) {

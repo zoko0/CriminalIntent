@@ -82,12 +82,6 @@ public class CrimeListFragment extends Fragment {
         }
 
         @Override
-        public int getItemViewType(int position) {
-            Crime crime = mCrimes.get(position);
-            return crime.isRequiresPolice();
-        }
-
-        @Override
         public CrimeHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_crime, parent, false);
             return new CrimeHolder(view);
