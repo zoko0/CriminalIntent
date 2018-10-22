@@ -57,8 +57,6 @@ public class CrimeListFragment extends Fragment {
             mSolvedIv = (ImageView) itemView.findViewById(R.id.crime_solved);
         }
 
-
-
         void bind(Crime crime) {
             mCrime = crime;
             mTitleTv.setText(mCrime.getTitle());
