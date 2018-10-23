@@ -2,10 +2,8 @@ package bartek.criminalintent;
 
 import android.content.Context;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -14,8 +12,7 @@ import java.util.UUID;
 
 public class CrimeLab {
     private static CrimeLab sCrimeLab;
-
-    private Map<UUID, Crime> mCrimes;
+    private List<Crime> mCrimes;
 
 
     static CrimeLab get(Context context) {
@@ -26,23 +23,27 @@ public class CrimeLab {
     }
 
     private CrimeLab(Context context) {
-        mCrimes = new LinkedHashMap<>();
+        mCrimes = new LinkedList<>();
 
         // Generating some crimes
         for (int i = 0; i < 100; i++) {
             Crime crime = new Crime();
             crime.setTitle("Crime #" + i);
             crime.setSolved(i % 2 == 0);
-            mCrimes.put(crime.getId(), crime);
+            mCrimes.add(crime);
         }
-
     }
 
-    public List<Crime> getCrimes() {
-        return mCrimes;
+    public LinkedList<Crime> getCrimes() {
+        return (LinkedList<Crime>) mCrimes;
     }
 
     public Crime getCrime(UUID id) {
-        return mCrimes.get(id);
+        for (Crime crime : mCrimes) {
+            if (crime.getId().equals(id)) {
+                return crime;
+            }
+        }
+        return null;
     }
 }
