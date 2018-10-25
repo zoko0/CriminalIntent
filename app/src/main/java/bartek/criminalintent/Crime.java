@@ -1,9 +1,8 @@
 package bartek.criminalintent;
 
+import java.sql.Time;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.util.Date;
-import java.util.Random;
 import java.util.UUID;
 
 /**
@@ -15,12 +14,13 @@ public class Crime {
     private UUID mId;
     private String mTitle;
     private Date mDate;
+    private Time mTime;
     private boolean mSolved;
 
     public Crime() {
         mId = UUID.randomUUID();
         mDate = new Date();
-        Random rand = new Random();
+        mTime = new Time(mDate.getTime());
     }
 
     public UUID getId() {
@@ -55,4 +55,13 @@ public class Crime {
         DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM);
         return df.format(date);
     }
+
+    public Time getTime() {
+        return mTime;
+    }
+
+    public void setTime(Time time) {
+        mTime = time;
+    }
+
 }
