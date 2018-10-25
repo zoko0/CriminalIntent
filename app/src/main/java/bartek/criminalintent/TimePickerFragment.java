@@ -40,7 +40,7 @@ public class TimePickerFragment extends DialogFragment {
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
                         int hour = mTimePicker.getHour();
                         int minute = mTimePicker.getMinute();
-                        Time time = new Time(hour, minute, 0);
+                        Time time = new Time(hour, minute, 0); // TODO: Time is deprecated
                         sendResult(Activity.RESULT_OK, time);
                     }
                 }).create();
